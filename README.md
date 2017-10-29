@@ -1,3 +1,1 @@
-# [WordsTree](https://wordstree.com)
-
-WordsTree website.
+# WP SPA Theme
