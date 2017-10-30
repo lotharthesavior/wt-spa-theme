@@ -1,0 +1,25 @@
+{
+  "name": "lotharthesavior/wt-spa",
+  "description": "WTSPA Wordpress theme",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Savio Resende",
+      "email": "savio@savioresende.com.br"
+    }
+  ],
+  "require": {
+    "lotharthesavior/php-flash-messages": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WTGear\\": "WTGear/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/lotharthesavior/PhpFlashMessages"
+    }
+  ]
+}

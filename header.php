@@ -1,3 +1,20 @@
+<?php
+
+// adjustment (send the user to the "/" page again if not there)
+global $wp;
+$site_url = get_site_url();
+$current_link = home_url( $wp->request );
+$permalink_diff = str_replace($site_url, "", $current_link);
+//var_dump($permalink_diff);
+if( $permalink_diff != "/" && $permalink_diff != "" ) {
+    $permalink_diff = (substr($permalink_diff, 0, 1) == "/") ? substr($permalink_diff, 1) : $permalink_diff;
+//    $permalink_diff = (substr($permalink_diff, -1) == "/") ? substr($permalink_diff, 1) : $permalink_diff;
+    echo "<script>window.location.href = '/#/' + '" . $permalink_diff . "';</script>";
+    exit;
+}
+
+?>
+
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
 	<head>

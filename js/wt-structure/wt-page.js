@@ -36,10 +36,20 @@ const WtPage = {
 
         } else {
 
+            $('article').prev().append("<span class='loading'>Loading...</span>");
+
             var pages = new wp.api.models.Page();
             pages.fetch({data: {slug: current_location}}).done(function (result) {
-                $('article').prev().html(result[0].title.rendered);
-                $('article').html(result[0].content.rendered);
+                console.log(result);
+
+                var title = result[0].title.rendered;
+                var content = result[0].content.rendered;
+
+                // fix for the ajax return of login on my-account
+                content_parsed = content.replace('/wp-json/wp/v2/pages?slug=%2Fmy-account', '/#/my-account');
+
+                $('article').prev().html(title);
+                $('article').html(content_parsed);
             });
 
         }

@@ -100,36 +100,6 @@ function wordstree_header_scripts()
 
         wp_register_script('wordstreescripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // WT
         wp_enqueue_script('wordstreescripts');
-
-        wp_enqueue_script( 'wp-api' );
-
-        // -----------------------------------
-        // wt-specific --
-        // -----------------------------------
-
-        // vue
-        wp_register_script('wt-vue-js','https://unpkg.com/vue', array('wp-api'), null, true); // WT
-        wp_enqueue_script('wt-vue-js');
-
-        // vue router
-        wp_register_script('wt-vue-router-js','https://unpkg.com/vue-router/dist/vue-router.js', array('wp-api'), null, true); // WT
-        wp_enqueue_script('wt-vue-router-js');
-
-        // nav
-        wp_register_script('wordstreescripts-nav', get_template_directory_uri() . '/js/wt-structure/wt-nav.js', array('wp-api', 'wt-vue-js'), null, true); // WT
-        wp_enqueue_script('wordstreescripts-nav');
-
-        // pages
-        wp_register_script('wordstreescripts-page', get_template_directory_uri() . '/js/wt-structure/wt-page.js', array('wp-api', 'wt-vue-js', 'wordstreescripts-nav'), null, true); // WT
-        wp_enqueue_script('wordstreescripts-page');
-
-        // router
-        wp_register_script('wordstreescripts-router', get_template_directory_uri() . '/js/wt-structure/wt-router.js', array('wp-api', 'wt-vue-js', 'wordstreescripts-page', 'wordstreescripts-nav'), null, true); // WT
-        wp_enqueue_script('wordstreescripts-router');
-
-        // -----------------------------------
-        // -----------------------------------
-        // -----------------------------------
     }
 }
 
@@ -150,8 +120,6 @@ function wordstree_styles()
 
     wp_register_style('wordstree', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('wordstree'); // Enqueue it!
-
-    wp_enqueue_style('wt-fontawesome', get_stylesheet_directory_uri() . '/fonts/font-awesome-4.7.0/css/font-awesome.css', array(), '1.0');
 }
 
 // Register wtree Blank Navigation
@@ -480,5 +448,7 @@ function wtree_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 {
     return '<h2>' . $content . '</h2>';
 }
+
+include __DIR__ . '/WTGear/wt-functions.php';
 
 ?>
