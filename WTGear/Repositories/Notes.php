@@ -23,7 +23,7 @@ class Notes implements Interfaces\RepositoryInterface
      * @param int $id
      * @return EntityInterface
      */
-    public function findById(int $id): EntityInterface
+    public function findById(int $id): \WTGear\Repositories\Interfaces\EntityInterface
     {
 //        $arrayData = $this->persistence->retrieve($id);
 //
@@ -41,7 +41,7 @@ class Notes implements Interfaces\RepositoryInterface
      * @param EntityInterface $entity
      * @return bool
      */
-    public function save(EntityInterface $post): bool
+    public function save(\WTGear\Repositories\Interfaces\EntityInterface $post): bool
     {
 //        $id = $this->persistence->persist([
 //            'text' => $post->getText(),
@@ -60,7 +60,7 @@ class Notes implements Interfaces\RepositoryInterface
      * @param array $args
      * @return CollectionInterface
      */
-    public function search(array $args) : CollectionInterface
+    public function search(array $args) : \WTGear\Repositories\Interfaces\CollectionInterface
     {
         return $this->searchPosts( $args );
     }
@@ -71,7 +71,7 @@ class Notes implements Interfaces\RepositoryInterface
      * @param array $args
      * @return CollectionInterface
      */
-    private function searchPosts( array $args ) : CollectionInterface
+    private function searchPosts( array $args ) : \WTGear\Repositories\Interfaces\CollectionInterface
     {
         $note_collection = new Collections\NoteCollection();
 

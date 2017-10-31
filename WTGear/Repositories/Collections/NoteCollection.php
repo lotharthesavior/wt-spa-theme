@@ -81,7 +81,7 @@ class NoteCollection implements \WTGear\Repositories\Interfaces\CollectionInterf
         $traversable = array_map(function ($item) {
             $item_array = (array) $item;
 
-            $chapter_entity = new \Repositories\Entities\Note();
+            $chapter_entity = new \WTGear\Repositories\Entities\Note();
 
             foreach ($item_array as $key => $item_attribute){
                 $chapter_entity->{strtolower($key)} = $item_attribute;

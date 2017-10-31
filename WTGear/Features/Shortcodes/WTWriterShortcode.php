@@ -85,9 +85,10 @@ class WTWriterShortcode implements Interfaces\WTShortcodeInterface
     /**
      * Receive the request (Router)
      *
+     * @param array $args
      * @return void
      */
-    public function run()
+    public function run(array $args = [])
     {
         if (
             !empty($_GET)

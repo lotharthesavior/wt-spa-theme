@@ -17,9 +17,9 @@
 
 namespace WTGear\Features\Shortcodes;
 
-use Repositories\Notes;
-use Repositories\Interfaces\CollectionInterface;
-use Repositories\Interfaces\RepositoryInterface;
+use WTGear\Repositories\Notes;
+use WTGear\Repositories\Interfaces\CollectionInterface;
+use WTGear\Repositories\Interfaces\RepositoryInterface;
 
 global $wt_theme_dir;
 global $terms;
@@ -84,9 +84,10 @@ class WTNotesamaShortcode implements Interfaces\WTShortcodeInterface
     /**
      * Receive the request (Router)
      *
+     * @param array $args
      * @return void
      */
-    public function run()
+    public function run(array $args = [])
     {
         if (
             !empty($_GET)

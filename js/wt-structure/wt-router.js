@@ -13,37 +13,45 @@ const NotFound = {
     }
 };
 
-const routes = {
+// const routes = {
+const routes = [
+
     // -------------------------------
     // basic -------------------------
     // -------------------------------
-    '/': WtPage,
-    '/my-account': WtPage,
+    { path: '/', name: "home", mode: "hash", component: WtPage},
+    { path: '/my-account', name: "my-account", mode: "hash", component: WtPage},
     // -------------------------------
     // -------------------------------
     // -------------------------------
 
     // -------------------------------
-    // writer ------------------------
+    // general action for shortcodes -
     // -------------------------------
-    '/writer': WtPage,
-    '/writer/new': WtPage
-    // -------------------------------
+    { path: '/:slug/:action?', mode: "hash", component: WtPage}
     // -------------------------------
     // -------------------------------
-}
+    // -------------------------------
+
+];
+
+const router = new VueRouter({
+    routes: routes // short for `routes: routes`
+})
 
 var wt_app = new Vue({
+    router: router,
     el: '#theme-space',
     data: {
         currentRoute: window.location.hash.replace('#','')
     },
     computed: {
         ViewComponent () {
-            return routes[this.currentRoute] || NotFound;
+            return this.$route.matched[0].components.default || NotFound;
         }
     },
     render (h) {
+        this.ViewComponent.route = this.$route;
         this.ViewComponent.start();
     }
 });

@@ -112,6 +112,6 @@ class Note implements \WTGear\Repositories\Interfaces\EntityInterface
      * @param string $name
      */
     public function __get(string $name){
-        return $this->{$name};
+        return $this->{$name} ?? null;
     }
 }

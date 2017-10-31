@@ -17,16 +17,24 @@ namespace WTGear\Features;
 class WTThemeShortcodes
 {
 
+    /**
+     *
+     * @param string $mode
+     */
     public static function addWriterShortcode()
     {
-        add_shortcode('wt-writer', function () {
+        add_shortcode('wt-writer', function ($args) {
+            if(!is_array($args)) $args = [$args];
+
             $wt_writer_shortcode = new Shortcodes\WTWriterShortcode();
-            return $wt_writer_shortcode->run();
+            return $wt_writer_shortcode->run($args);
         });
 
-        add_shortcode('wt-notesama', function () {
+        add_shortcode('wt-notesama', function ($args) {
+            if(!is_array($args)) $args = [$args];
+
             $wt_notesama_shortcode = new Shortcodes\WTNotesamaShortcode();
-            return $wt_notesama_shortcode->run();
+            return $wt_notesama_shortcode->run($args);
         });
     }
 

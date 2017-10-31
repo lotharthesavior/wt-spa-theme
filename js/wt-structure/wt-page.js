@@ -9,12 +9,13 @@
 var $ = jQuery;
 
 const WtPage = {
-    start: function(){
+    start : function(){
 
         current_location = window.location.hash.replace('#', '');
 
-        if( current_location == '/' )
+        if( current_location == '/' ) {
             current_location = 'home';
+        }
 
         this.callRoute(current_location);
 
@@ -38,9 +39,21 @@ const WtPage = {
 
             $('article').prev().append("<span class='loading'>Loading...</span>");
 
+            var request_data = this.route.params;
+            if( typeof this.route.name != 'undefined' ){
+                request_data = {
+                    slug: this.route.name
+                };
+            }
+
             var pages = new wp.api.models.Page();
-            pages.fetch({data: {slug: current_location}}).done(function (result) {
-                console.log(result);
+            pages.fetch({data: request_data}).done(function (result) {
+
+                if( result.length == 0 ) {
+                    $('article').prev().html('Not Found!');
+                    $('article').html('');
+                    return;
+                }
 
                 var title = result[0].title.rendered;
                 var content = result[0].content.rendered;
